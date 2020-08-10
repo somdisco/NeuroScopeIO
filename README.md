@@ -12,7 +12,6 @@ devtools::install_github("somdisco/NeuroScopeIO")
 
 See the [NeuroScopeIO homepage](https://somdisco.github.io/NeuroScopeIO/output/index.html) for more information. 
 
-# See Also 
 
 
 
