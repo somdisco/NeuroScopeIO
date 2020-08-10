@@ -1,0 +1,175 @@
+#' Convert cube layout to band sequential layout
+#'
+#' Converts two or three dimensional arrays in [row,col] layout (such as those returned from \code{read_khoros_cube}) to either a vector (if input is 2d) or matrix (if input is 3d).
+#'
+#' @param X either a matrix or 3d array
+#'
+#' @return one of:
+#' \itemize{
+#'    \item a vector (if X is a matrix) of length = nrow(X)*ncol(X)
+#'    \item a matrix (if X is an array) of dimension (nrow(X)*ncol(X), nbands(X))
+#' }
+#'
+#' In either case, the rows of the output represent cube information starting from the NW corner [1,1] to the SE corner
+#'
+#' @examples
+#' convert_cbl_to_bsl(read_khoros_cube('8class-caseI-n_m0v5.viff'))
+#'
+#' @export
+convert_cbl_to_bsl = function(X) {
+  ### a is either a 3d array or a matrix
+  ### function will "vectorize" the array to band sequential layout
+  ### starting from the NW corner, ending at SE corner.  The first row/element of the output represents data
+  ### in the NW corner of the image, while the last represents data in the SE corner of the image
+  width = dim(X)[2]
+  height = dim(X)[1]
+  depth = dim(X)[3]
+
+  ### For 3d arrays, depth will be an integer
+  if(!is.na(depth)) {
+    out = matrix(NA, nrow = width*height, ncol = depth)
+    for(i in 1:depth) {out[,i] = c(t(X[,,i]))}
+  } else {
+    out = c(t(X))
+  }
+
+  return(out)
+}
+
+
+
+#' Reorder the rows of a band sequential layout matrix along the height of the image
+#'
+#' The results of \code{convert_cbl_to_bsl} begin at the NW corner of the image.  This function will re-order a bsl-matrix such that its first row contains information from the SW corner of the image (and last row contains information at the NE corner).
+#'
+#' @param X a data matrix in band sequential layout (nrow = img_height*img_width, ncol = number of image bands)
+#'
+#' @return a matrix of the same dimension as X, reordered
+#'
+#' @examples
+#' reorder_bsl_along_height(convert_cbl_to_bsl(read_khoros_cube('8class-caseI-n_m0v5.viff')))
+#'
+#' @export
+reorder_bsl_along_height = function(X, img_width, img_height) {
+  ### Given a datamatrix, vector or cube whose [1,] row / [1] element / [1,1,] depth is assumed to represent the
+  ### NW corner of the image, convert to a datamatrix/vector/cube whose first element represents the SW corner of the image
+
+  ### NW oriented images start indexing at the NW corner
+  idx = matrix(1:(img_width*img_height), nrow=img_height, ncol=img_width, byrow=T)
+  ### Reverse the rows
+  idx = idx[img_height:1,]
+  ### Vectorize by row
+  idx = c(t(idx))
+
+  ### If input is a matrix ...
+  if(!is.na(dim(X)[2])) {
+    out = X[idx,]
+  } else {
+    ### If input is a vector ...
+    out = X[idx]
+  }
+
+  return(out)
+}
+
+
+
+#' Reorder the rows of an image cube along the height of the image
+#'
+#' This will swap row 1 with row(end), row 2 with row(end)-1, and so on.
+#'
+#' @param X an image cube (2d or 3d) in cube layout (nrow = img_height, ncol = img_width, nslices = number of image bands)
+#'
+#' @return a cube of the same dimension as X, reordered along dimension 1
+#'
+#' @examples
+#' reorder_bsl_along_height(convert_cbl_to_bsl(read_khoros_cube('8class-caseI-n_m0v5.viff')))
+#'
+#' @export
+reorder_cbl_along_height = function(X) {
+  width = dim(X)[2]
+  height = dim(X)[1]
+  depth = dim(X)[3]
+
+  idx = 1:height
+
+  if(is.na(depth)) {
+    out = X[rev(idx),]
+  } else {
+    out = X[rev(idx),,]
+  }
+
+  return(out)
+}
+
+
+
+#' Map a cube layout index to a band sequential layout index
+#'
+#' Cube layout indices are of the form [row, col].  This function returns the linear index in band sequential layout of [row, col]
+#'
+#' @param row an integer specifying the row index in cube layout
+#' @param col an integer specifying the column index in cube layout
+#' @param img_width an integer specifying the width of the image in pixels
+#' @param img_height an integer specifying the height of the image in pixels
+#'
+#' @return an integer in 1:(img_width*img_height)
+#'
+#' @examples
+#' cblidx_to_bslidx(1,1,10,10) returns 1
+#' cblidx_to_bslidx(2,1,10,10) returns 11
+#' cblidx_to_bslidx(10,1,10,10) returns 91
+#' cblidx_to_bslidx(10,10,10,10) returns 100
+#'
+#' @export
+cblidx_to_bslidx = function(row, col, img_width, img_height) {
+  return( (row-1)*img_width + col );
+}
+
+
+#' Map a band sequential layout index to a cube layout index
+#'
+#' Band sequential layout indices are linear while cube layout indices are of the form [row, col].
+#'
+#' @param index an integer specifying the index in band sequential layout
+#' @param img_width an integer specifying the width of the image in pixels
+#' @param img_height an integer specifying the height of the image in pixels
+#'
+#' @return a 1x2 matrix of [row,col] where row in 1:img_height and col in 1:img_width
+#'
+#' @examples
+#' bslidx_to_cblidx(1,10,10) returns [1,1]
+#' bslidx_to_cblidx(10,10,10) returns [1,10]
+#' bslidx_to_cblidx(91,10,10) returns [10,1]
+#' bslidx_to_cblidx(100,10,10) returns [10,10]
+#'
+#' @export
+bslidx_to_cblidx = function(index, img_width, img_height) {
+  rowidx = ceiling(index/img_width)
+  colidx = index - (rowidx-1)*img_width
+  return( matrix(c(rowidx,colidx), nrow=1, ncol=2) )
+}
+
+#' Convert a band sequential layout matrix to a cube layout array
+#'
+#' The rows of a band sequential layout data matrix contain the data in the image cube pixel bands.  This function puts a bsl back into a cube (normally 3d array, 2d matrix if there is only one band)
+#'
+#' @param X a data matrix of dimension (img_width*img_height, num bands)
+#' @param img_width an integer specifying the width of the image in pixels
+#' @param img_height an integer specifying the height of the image in pixels
+#'
+#' @return a 3d array of dimension (img_height, img_width, num bands).  The first row of X will be put in the [1,1,] entry of the result.
+#'
+#' @examples
+#' convert_bsl_to_cbl(convert_cbl_to_bsl(read_khoros_cube('8class-caseI-n_m0v5.viff')))
+#'
+#' @export
+convert_bsl_to_cbl = function(X, img_width, img_height) {
+  n_dim = dim(X)[2]
+  n_pixels = img_width * img_height
+  out = array(NA, dim = c(img_height, img_width, n_dim))
+  for(i in 1:n_dim) {
+    out[,,i] = matrix(X[,i], nrow = img_height, ncol = img_width, byrow = T)
+  }
+  return(out)
+}

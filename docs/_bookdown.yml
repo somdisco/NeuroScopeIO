@@ -1,0 +1,8 @@
+book_filename: "NeuroScopeIO.README"
+output_dir: "output"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+
+

@@ -1,0 +1,583 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={NeuroScopeIO},
+            pdfauthor={Josh Taylor},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+\usepackage{bbold}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+
+\title{NeuroScopeIO}
+\providecommand{\subtitle}[1]{}
+\subtitle{R Interaction for NeuroScope Products}
+\author{Josh Taylor}
+\date{05-July-2020}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{preface}{%
+\section*{Preface}\label{preface}}
+\addcontentsline{toc}{section}{Preface}
+
+The NeuroScopeIO package provides input/output functionality to read NeuroScope learning products into an R working environment, and partial functionality to write such products back to file. We will use a 10-dimensional SHGR cube and its associated SOM products to demonstrate this functionality. We consider ``NeuroScope'' products to comprise the following list:
+
+\begin{itemize}
+\tightlist
+\item
+  a data cube, in Khoros viff format
+\item
+  an include file (.incl)
+\item
+  an nna file (.nna)
+\item
+  a weight cube (.wgtcub) file, in Khoros viff format
+\item
+  a nunr file (.nunr)
+\item
+  a ctab file
+\item
+  a .cadj file, in Khoros viff format. Note: \(\texttt{ann-SOMconsc}\) recall produces the .cadj file in Khoros KDF format. This must be converted to viff format manually in order to import with NeuroScopeIO.
+\end{itemize}
+
+This document demonstrates common uses of functions in the NeuroScopeIO package, but does not exercise every function in the package. Complete documentation is available (both in stanard man pdf format, as well as interactive \texttt{?\textless{}function\_name\textgreater{}} format), so any of the package functions can be explored further via these help options.
+
+\hypertarget{collect-product-paths}{%
+\section{Collect Product Paths}\label{collect-product-paths}}
+
+To make this process ``.parm-file-like'', collect the paths of each product to start:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_file =}\StringTok{ "~/Google Drive/Datasets/SGRW/ds/100d/SGRW-100d_11class_cov100-500.viff"}
+\NormalTok{include_file =}\StringTok{ "~/Google Drive/Datasets/SGRW/ds/SGRW_11class.incl"}
+\NormalTok{nna_file =}\StringTok{ "~/Google Drive/Datasets/SGRW/ds/100d/SGRW-100d.nna"}
+\NormalTok{wgtcub_file =}\StringTok{ "~/Google Drive/Datasets/SGRW/dp/100d/recall/SGRW-100d_11class_cov100-500_20x20.k3.r.5M.wgtcub"}
+\NormalTok{nunr_file =}\StringTok{ "~/Google Drive/Datasets/SGRW/dp/100d/recall/SGRW-100d_11class_cov100-500_20x20.k3.r.5M.nunr"}
+\NormalTok{ctab_file =}\StringTok{ "~/Google Drive/Datasets/SGRW/ds/SGRW.ctab"}
+\NormalTok{cadj_file =}\StringTok{ "~/Google Drive/Datasets/SGRW/dp/100d/recall/SGRW-100d_11class_cov100-500_20x20.k3.r.5M.cadj"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{importing-data-products}{%
+\section{Importing Data Products}\label{importing-data-products}}
+
+\hypertarget{data-cubes}{%
+\subsection{Data Cubes}\label{data-cubes}}
+
+The function \texttt{NeuroScopeIO::read\_khoros\_viff} function accepts two arguments: \(\texttt{filename}\), which is a path to the viff cube to import, and \(\texttt{verbose}\), which is boolean. If \texttt{verbose=T} then the pixel spectra of the four ``corners'' of the image cube are printed to the R console window, which can be helpful for spot checking your import. The return value is a 3d data cube (array) in R, whose (1,1) element contains the spectral from pixel (1,1) in the image, and so on.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{read_khoros_viff}\NormalTok{(}\DataTypeTok{filename =}\NormalTok{ data_file, }\DataTypeTok{verbose =}\NormalTok{ T)}
+\CommentTok{## NW corner of cube: }
+\CommentTok{## 462.905417 467.139347 451.875788 470.143694 471.996632 470.979375 467.936955 465.556848 454.161335 461.324137 473.334481 480.390168 476.443341 455.830319 441.095279 439.470836 450.961738 480.850512 476.289590 466.560884 462.860865 467.264997 484.089233 474.261554 486.349378 484.372960 479.891681 468.072284 474.292927 471.782062 483.868598 478.434114 468.879215 468.346716 452.833794 447.359703 427.077417 398.776461 380.216384 374.790575 348.339872 357.474661 332.916679 359.997571 340.321592 358.210179 324.091123 303.456471 300.628871 288.338148 263.503222 282.594167 255.035451 260.302861 253.883799 240.602632 225.290664 212.443285 182.289182 174.120390 162.650775 186.485478 178.763019 147.542179 114.733801 117.456128 130.742473 105.545154 103.464901 82.036330 92.592826 72.371775 77.521850 85.175450 92.167791 98.580697 124.111761 128.435257 123.484324 115.636858 127.543217 130.490785 141.466288 157.498058 171.175108 170.918006 195.740554 182.381542 196.591101 214.531312 207.191930 193.879978 190.255149 207.677240 208.649775 212.392919 224.380676 231.642399 276.543361 271.495172}
+\CommentTok{## NE corner of cube:}
+\CommentTok{## 804.353130 821.655741 816.815530 822.657375 822.450648 805.601848 822.200685 830.811183 827.041546 832.767293 825.944846 839.364013 834.869276 823.737655 814.432268 804.503943 803.779608 796.588310 798.670821 790.318693 784.744751 791.146167 801.009245 816.662559 814.140741 818.066884 812.690489 810.689387 815.818205 808.724808 821.893573 820.735058 801.044839 784.108131 789.075317 781.774846 814.079346 803.210015 807.559813 821.385192 817.622085 824.051329 836.368333 843.401587 850.989435 846.383876 850.114898 850.257265 842.692469 846.446263 842.766497 847.571531 857.199043 879.706600 900.940821 897.395227 848.706110 822.972586 825.947504 815.445740 803.970729 795.843781 799.869847 801.951392 789.700447 776.384086 775.686474 770.827268 762.089856 754.361225 739.378772 726.790127 737.537560 736.523403 721.461170 718.246825 716.523985 708.753401 706.927268 682.739599 672.664577 663.394649 649.669611 630.002057 620.684699 612.129134 600.030668 597.632300 587.545247 587.035278 579.777805 576.083087 567.581192 564.933278 550.034293 524.662899 520.251160 513.590474 510.530266 513.814873}
+\CommentTok{## SW corner of cube:}
+\CommentTok{## 280.030129 260.716222 258.803367 221.690254 241.651300 246.235956 251.543549 233.403980 230.835027 193.730810 177.016994 156.644714 144.477926 135.068835 125.764259 105.191458 92.236929 80.139203 72.436972 70.300643 91.903324 92.509925 94.096357 78.333645 93.671704 100.475772 92.262470 103.514698 123.040452 114.404936 126.757339 130.753625 130.243967 129.907788 142.087864 148.917770 134.056808 120.848593 130.202979 129.354758 115.521644 112.319113 113.188364 104.731765 102.296041 78.479129 87.750895 89.728023 83.484264 74.362826 102.679900 111.323660 118.301298 120.432639 128.536643 132.771810 140.690766 142.494834 140.049443 138.925918 147.589510 143.392585 117.166103 129.367752 116.532179 128.754720 147.352920 147.899061 125.857617 128.175135 137.970951 156.350251 151.187806 164.282430 158.945535 180.389709 191.766469 196.694292 189.288153 201.134070 190.844981 199.237132 216.689355 233.190282 233.894118 219.838539 218.127674 208.146557 254.117140 251.758498 237.156102 234.104744 211.507529 222.207499 258.206425 241.438460 244.611309 250.027426 268.884742 271.600647}
+\CommentTok{## SE corner of cube:}
+\CommentTok{## 694.161150 706.606234 717.338467 717.277809 735.129885 753.215351 747.655152 761.917667 768.672739 763.681568 760.701872 756.486393 770.528292 783.567061 793.178351 803.398597 819.174402 831.837603 850.299578 828.362206 838.557097 849.101145 865.598972 866.109841 887.573397 876.638769 884.922573 876.886232 888.223196 894.298952 908.254135 930.816295 944.785814 958.146711 955.533505 963.724754 981.737840 994.406719 1022.534010 1009.666071 1013.727413 1001.357979 1007.914503 1003.686074 1011.750063 1021.638731 1030.419643 1029.768178 1026.659460 1060.011889 1076.046751 1074.581725 1090.198474 1092.372262 1092.926026 1107.995223 1088.787906 1097.741583 1073.632139 1062.620631 1075.346016 1068.904342 1064.582176 1057.056786 1091.398096 1059.318654 1065.909417 1068.538086 1077.736985 1077.740973 1068.440847 1048.383679 1063.562894 1074.715111 1055.060139 1035.389863 1019.273709 1009.956190 1019.812581 1015.649581 1011.075110 1006.923306 1003.454606 980.933190 986.772710 986.826976 975.667198 945.313115 944.593393 936.455738 937.286261 928.866086 924.201746 909.101249 889.861282 898.314063 891.370622 881.129771 872.878963 864.187684}
+\KeywordTok{str}\NormalTok{(X)}
+\CommentTok{##  num [1:128, 1:128, 1:100] 463 466 466 499 485 ...}
+\end{Highlighting}
+\end{Shaded}
+
+Note that the function \texttt{read\_khoros\_viff} is internally calling another function of the NeuroScopeIO library to read and interpret the Khoros viff header: \texttt{read\_khoros\_header}. It is rarely necessary to invoke this function by itself.
+
+We can strip out and save the cube dimensions for later use:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{img_x =}\StringTok{ }\KeywordTok{ncol}\NormalTok{(X)}
+\NormalTok{img_x}
+\CommentTok{## [1] 128}
+\NormalTok{img_y =}\StringTok{ }\KeywordTok{nrow}\NormalTok{(X)}
+\NormalTok{img_y}
+\CommentTok{## [1] 128}
+\NormalTok{img_z =}\StringTok{ }\KeywordTok{dim}\NormalTok{(X)[}\DecValTok{3}\NormalTok{]}
+\NormalTok{img_z}
+\CommentTok{## [1] 100}
+\end{Highlighting}
+\end{Shaded}
+
+Most base R functionality is built around \textbf{data matrices}, not arrays, so we need to convert the 3d cube we just imported to a data matrix. Use the command:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{convert_datcub_to_datmat}\NormalTok{(}\DataTypeTok{datcub =}\NormalTok{ X)}
+\KeywordTok{str}\NormalTok{(X)}
+\CommentTok{##  num [1:16384, 1:100] 463 489 490 467 470 ...}
+\end{Highlighting}
+\end{Shaded}
+
+Data matrices have nrows = img\_x*img\_y and ncols = img\_z. The data matrix is populated in band-sequantial order (top to bottom, left to right), so that row 1 corresponds to the spectra in pixel (x=1,y=1), row 2 corresponds to pixel (x=2,y=1), and so on.
+
+If desired at some point, any data matrix can be converted back into a data cube via
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Xcube =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{convert_datmat_to_datcub}\NormalTok{(}\DataTypeTok{datmat =}\NormalTok{ X, }\DataTypeTok{img_x =}\NormalTok{ img_x, }\DataTypeTok{img_y =}\NormalTok{ img_y)}
+\KeywordTok{str}\NormalTok{(Xcube)}
+\CommentTok{##  num [1:128, 1:128, 1:100] 463 466 466 499 485 ...}
+\end{Highlighting}
+\end{Shaded}
+
+You must supply the image x-y dimensions for this conversion.
+
+\hypertarget{include-files}{%
+\subsection{Include Files}\label{include-files}}
+
+The *.incl file associated with each data cube contains pertinent information about pixel labels and masking (that is, whether each pixel is ``masked'' from the training / recall process). We import this information into R with the function \(\texttt{read\_incl}\), which takes a path to a .incl file, along with the image x-y dimensions as inputs:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{incl =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{read_incl}\NormalTok{(}\DataTypeTok{filename =}\NormalTok{ include_file, }\DataTypeTok{img_x =}\NormalTok{ img_x, }\DataTypeTok{img_y =}\NormalTok{ img_y)}
+\KeywordTok{str}\NormalTok{(incl)}
+\CommentTok{## List of 2}
+\CommentTok{##  $ masked: logi [1:128, 1:128] FALSE FALSE FALSE FALSE FALSE FALSE ...}
+\CommentTok{##  $ class : chr [1:128, 1:128] "A" "A" "A" "A" ...}
+\end{Highlighting}
+\end{Shaded}
+
+The return value of \(\texttt{read\_incl}\) is an R list with components:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{masked}, which is a matrix (nrows = img\_y, ncols = img\_x) whose (i,j) entry = TRUE if pixel (i,j) is maksed from processing, or FALSE otherwise
+\item
+  \textbf{class}, which is a matrix (nrows = img\_y, ncols = img\_x) whose (i,j) entry = the class label of pixel (i,j). If no class labels are found in the .incl file, all entries of this matrix are set = ``?''.\\
+  If an application requires matching a label or mask designation to each row of the data matrix \(X\), we can convert the incl matrices (which are just cubes which have a 3rd dimension size = 1) to \(\texttt{convert\_datcub\_to\_datmat}\):
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec_mask =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{convert_datcub_to_datmat}\NormalTok{(}\DataTypeTok{datcub =}\NormalTok{ incl}\OperatorTok{$}\NormalTok{masked)}
+\KeywordTok{str}\NormalTok{(vec_mask)}
+\CommentTok{##  logi [1:16384, 1] FALSE FALSE FALSE FALSE FALSE FALSE ...}
+\NormalTok{vec_class =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{convert_datcub_to_datmat}\NormalTok{(}\DataTypeTok{datcub =}\NormalTok{ incl}\OperatorTok{$}\NormalTok{class)}
+\KeywordTok{str}\NormalTok{(vec_class)}
+\CommentTok{##  chr [1:16384, 1] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" "A" ...}
+\end{Highlighting}
+\end{Shaded}
+
+\(\color{red}{\text{Note}}\): Since R follows column-major order, DO NOT just vectorize the matrices (i.e., with \texttt{c(incl\$class)}). This would result in a vector of labels in pixel order (x=1,y=1), (x=1,y=2) (i.e, along rows). You could achieve correct behavior with \texttt{c(t(incl\$class))}, but I suggest using the built-in conversion functions for clarity.
+
+\hypertarget{nna-files}{%
+\subsection{nna Files}\label{nna-files}}
+
+The scaling information (from network input range to network output range) utilized during training and recall is contained in .nna files, which we load into R with
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nna =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{read_nna}\NormalTok{(}\DataTypeTok{filename =}\NormalTok{ nna_file, }\DataTypeTok{img_z =}\NormalTok{ img_z)}
+\KeywordTok{str}\NormalTok{(nna)}
+\CommentTok{## List of 4}
+\CommentTok{##  $ input_min : num [1:100] -200 -200 -200 -200 -200 -200 -200 -200 -200 -200 ...}
+\CommentTok{##  $ input_max : num [1:100] 1400 1400 1400 1400 1400 1400 1400 1400 1400 1400 ...}
+\CommentTok{##  $ output_min: num 0}
+\CommentTok{##  $ output_max: num 1}
+\end{Highlighting}
+\end{Shaded}
+
+The return value of \texttt{read\_nna} is again a list with components:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{input\_min} the min of the network input range, by dimension (a vector of length=img\_z)
+\item
+  \textbf{input\_max} the max of the network input range, by dimension (a vector of length=img\_z)
+\item
+  \textbf{output\_min} the min of the network output range (a single number, usually = 0)
+\item
+  \textbf{output\_max} the max of the network output range (a single number, usually = 1)
+\end{itemize}
+
+Importing .nna information is required for replicating a recall (performing BMU selection, building a CADJ matrix, etc) in R.
+
+\hypertarget{ann-somconsc-products}{%
+\section{ann-SOMconsc Products}\label{ann-somconsc-products}}
+
+\hypertarget{weight-cubes}{%
+\subsection{Weight Cubes}\label{weight-cubes}}
+
+Since weight cubes (*.wgtcub files) are just Khoros cubes in viff format, we can import them with the same function used to import the data cubes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{W =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{read_khoros_viff}\NormalTok{(}\DataTypeTok{filename =}\NormalTok{ wgtcub_file, }\DataTypeTok{verbose =}\NormalTok{ F)}
+\KeywordTok{str}\NormalTok{(W)}
+\CommentTok{##  num [1:20, 1:20, 1:100] -0.404 -0.403 -0.406 -0.411 -0.33 ...}
+\end{Highlighting}
+\end{Shaded}
+
+Note that, as imported, W is in internal network range, so if any comparison to the data is desired it must be mapped to data range first. The weight cube has dimensions width = som\_x and height = som\_y, which we can save for later use:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{som_x =}\StringTok{ }\KeywordTok{ncol}\NormalTok{(W)}
+\NormalTok{som_x}
+\CommentTok{## [1] 20}
+\NormalTok{som_y =}\StringTok{ }\KeywordTok{nrow}\NormalTok{(W)}
+\NormalTok{som_y}
+\CommentTok{## [1] 20}
+\end{Highlighting}
+\end{Shaded}
+
+Ultimately we need to convert the imported array W to a data matrix as well, but there is a crucial intermediate step. The (1,1) entry of W corresponds to the prototype vector attached to the top-left neuron of the SOM lattice. However, NeuroScope convention for other SOM products (nunr, CADJ) begins neuron/prototype ordering at the \textbf{bottom left} corner of the lattice. Thus, we need to flip the rows of this cube before converting to a data matrix using the function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{W =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{flip_datcub}\NormalTok{(}\DataTypeTok{datcub =}\NormalTok{ W, }\DataTypeTok{flipX =}\NormalTok{ F, }\DataTypeTok{flipY =}\NormalTok{ T, }\DataTypeTok{flipZ =}\NormalTok{ F)}
+\end{Highlighting}
+\end{Shaded}
+
+Note the arguments flipX, flipY, and flipZ all default to F (to flip rows of a data cube, we set flipY = TRUE). Now we can convert W to a data matrix as above:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{W =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{convert_datcub_to_datmat}\NormalTok{(}\DataTypeTok{datcub =}\NormalTok{ W)}
+\KeywordTok{str}\NormalTok{(W)}
+\CommentTok{##  num [1:400, 1:100] 0.098 0.0974 0.0982 0.098 0.1027 ...}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{nunr-mapping-info}{%
+\subsection{NUNR Mapping Info}\label{nunr-mapping-info}}
+
+The actual mapping formed during SOM learning is contained in the associated .nunr file, which we load into R via
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nunr =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{read_nunr}\NormalTok{(}\DataTypeTok{filename =}\NormalTok{ nunr_file, }\DataTypeTok{som_x =}\NormalTok{ som_x, }\DataTypeTok{som_y =}\NormalTok{ som_y, }\DataTypeTok{img_x =}\NormalTok{ img_x, }\DataTypeTok{img_y =}\NormalTok{ img_y)}
+\KeywordTok{str}\NormalTok{(nunr)}
+\CommentTok{## List of 4}
+\CommentTok{##  $ density     : num [1:400] 86 77 78 72 83 68 66 71 69 63 ...}
+\CommentTok{##  $ class       : chr [1:400] "B" "B" "B" "B" ...}
+\CommentTok{##  $ mapping     : int [1:128, 1:128] 272 334 273 292 247 230 356 248 337 345 ...}
+\CommentTok{##  $ som_indexmap: int [1:20, 1:20] 381 361 341 321 301 281 261 241 221 201 ...}
+\end{Highlighting}
+\end{Shaded}
+
+Note that the function \texttt{read\_nunr} requires not only the path of the nunr file itself, but also the dimensions of the image cube and SOM. This information is contained in the header of .nunr files, but I have required it here as a check. Again, the nunr information is returned to R as a list with components:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{density} a vector (length = \# of PEs, or som\_x*som\_y) containing the size of each prototype's receptive field
+\item
+  \textbf{class} a vector (length = \# of PEs) containing the plurality data label of pixels mapped to each prototype
+\item
+  \textbf{mapping} a matrix (nrows = img\_y, ncols = img\_x) whose (i,j) entry contains the index of the PEto which pixel (i,j) is mapped. For this purpose, PE indices are treated as linear indices (not array indices), and range from 1 to som\_x*som\_y.\\
+\item
+  \textbf{som\_indexmap} a matrix(nrows = som\_y, ncols = som\_x) whose (i,j) entry contains the linear index of the (i,j) neuron on the SOM lattice. The information in this matrix can be merged with that in the mapping matrix to determing the (x,y) neuron location to which a data vector is mapped, if desired.
+\end{itemize}
+
+\hypertarget{color-tables}{%
+\subsection{Color Tables}\label{color-tables}}
+
+Color table information is contained in .ctab files, which can be loaded with
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ctab =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{read_ctab}\NormalTok{(}\DataTypeTok{filename =}\NormalTok{ ctab_file)}
+\KeywordTok{str}\NormalTok{(ctab)}
+\CommentTok{## 'data.frame':    20 obs. of  4 variables:}
+\CommentTok{##  $ class: chr  "A" "B" "C" "D" ...}
+\CommentTok{##  $ R    : num  15 255 76 237 182 255 255 23 136 140 ...}
+\CommentTok{##  $ G    : num  82 116 187 41 96 242 111 190 128 86 ...}
+\CommentTok{##  $ B    : num  186 23 23 57 205 0 255 207 123 75 ...}
+\end{Highlighting}
+\end{Shaded}
+
+The color table is returned to R as a data frame with columns:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{class} the set of distinct labels for pixels in the data cube
+\item
+  \textbf{R}, \textbf{G}, \textbf{B} which are the RGB color components associated with each label.
+\end{itemize}
+
+Note that no assumption is made to the completeness of the ctab (i.e., whether it is missing color specifications for labels found in incl\$class). The above function merely reads the information as it exists in a .ctab file.
+
+\hypertarget{cadj}{%
+\subsection{CADJ}\label{cadj}}
+
+CADJ matrices are stored in .cadj files which are Khoros KDF formatted. \textbf{For use in R, .cadj files must be converted to viff format} with kformats. Once this conversion is complete, we can read the CADJ with the viff reader:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{CADJ =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{read_khoros_viff}\NormalTok{(}\DataTypeTok{filename =}\NormalTok{ cadj_file, }\DataTypeTok{verbose =}\NormalTok{ F)}
+\KeywordTok{str}\NormalTok{(CADJ)}
+\CommentTok{##  int [1:400, 1:400, 1] 0 34 0 0 0 0 0 1 0 0 ...}
+\end{Highlighting}
+\end{Shaded}
+
+Note that the above imported CADJ as a 3d cube, whose 3rd dimension has size = 1. It is generally easier to work with matrices in R, so we can drop the third dimension
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{CADJ =}\StringTok{ }\NormalTok{CADJ[,,}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+Since the CONN matrix is also of frequent use, I suggest building it from the CADJ import immediately:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{CONN =}\StringTok{ }\NormalTok{CADJ }\OperatorTok{+}\StringTok{ }\KeywordTok{t}\NormalTok{(CADJ)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{importing-a-complete-product-suite}{%
+\section{Importing a Complete Product Suite}\label{importing-a-complete-product-suite}}
+
+The above examples demonstrate import of NeuroScope products individually, but often we would like the entire product suite brought into an R environment. This can be accomplished with the helper function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SHGRSOM =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{load_SOM_products}\NormalTok{(}\DataTypeTok{data_file =}\NormalTok{ data_file, }\DataTypeTok{include_file =}\NormalTok{ include_file, }\DataTypeTok{nna_file =}\NormalTok{ nna_file, }\DataTypeTok{wgtcub_file =}\NormalTok{ wgtcub_file, }\DataTypeTok{nunr_file =}\NormalTok{ nunr_file, }\DataTypeTok{ctab_file =}\NormalTok{ ctab_file, }\DataTypeTok{cadj_file =}\NormalTok{ cadj_file)}
+\CommentTok{## Loading NeuroScope products ...}
+\CommentTok{## ++ data cube ... done}
+\CommentTok{## ++ include file ... done}
+\CommentTok{## ++ nna file ... done}
+\CommentTok{## ++ weight cube ... done}
+\CommentTok{## ++ weight cube scaling ... done}
+\CommentTok{## ++ nunr file ... done}
+\CommentTok{## ++ lattice coords ... done}
+\CommentTok{## ++ ctab file ... done}
+\CommentTok{## ++ cadj file ... done}
+\KeywordTok{str}\NormalTok{(SHGRSOM)}
+\CommentTok{## List of 14}
+\CommentTok{##  $ X             : num [1:16384, 1:100] 463 489 490 467 470 ...}
+\CommentTok{##  $ img_x         : int 128}
+\CommentTok{##  $ img_y         : int 128}
+\CommentTok{##  $ img_z         : int 100}
+\CommentTok{##  $ incl          :List of 2}
+\CommentTok{##   ..$ masked: logi [1:128, 1:128] FALSE FALSE FALSE FALSE FALSE FALSE ...}
+\CommentTok{##   ..$ class : chr [1:128, 1:128] "A" "A" "A" "A" ...}
+\CommentTok{##  $ nna           :List of 4}
+\CommentTok{##   ..$ input_min : num [1:100] -200 -200 -200 -200 -200 -200 -200 -200 -200 -200 ...}
+\CommentTok{##   ..$ input_max : num [1:100] 1400 1400 1400 1400 1400 1400 1400 1400 1400 1400 ...}
+\CommentTok{##   ..$ output_min: num 0}
+\CommentTok{##   ..$ output_max: num 1}
+\CommentTok{##  $ W             : num [1:400, 1:100] -43.2 -44.1 -42.8 -43.2 -35.7 ...}
+\CommentTok{##  $ som_x         : int 20}
+\CommentTok{##  $ som_y         : int 20}
+\CommentTok{##  $ nunr          :List of 4}
+\CommentTok{##   ..$ density     : num [1:400] 86 77 78 72 83 68 66 71 69 63 ...}
+\CommentTok{##   ..$ class       : chr [1:400] "B" "B" "B" "B" ...}
+\CommentTok{##   ..$ mapping     : int [1:128, 1:128] 272 334 273 292 247 230 356 248 337 345 ...}
+\CommentTok{##   ..$ som_indexmap: int [1:20, 1:20] 381 361 341 321 301 281 261 241 221 201 ...}
+\CommentTok{##  $ lattice_coords: int [1:400, 1:2] 1 2 3 4 5 6 7 8 9 10 ...}
+\CommentTok{##   ..- attr(*, "dimnames")=List of 2}
+\CommentTok{##   .. ..$ : NULL}
+\CommentTok{##   .. ..$ : chr [1:2] "x" "y"}
+\CommentTok{##  $ ctab          :'data.frame':  20 obs. of  4 variables:}
+\CommentTok{##   ..$ class: chr [1:20] "A" "B" "C" "D" ...}
+\CommentTok{##   ..$ R    : num [1:20] 15 255 76 237 182 255 255 23 136 140 ...}
+\CommentTok{##   ..$ G    : num [1:20] 82 116 187 41 96 242 111 190 128 86 ...}
+\CommentTok{##   ..$ B    : num [1:20] 186 23 23 57 205 0 255 207 123 75 ...}
+\CommentTok{##  $ CADJ          : int [1:400, 1:400] 0 34 0 0 0 0 0 1 0 0 ...}
+\CommentTok{##  $ CONN          : int [1:400, 1:400] 0 72 0 0 0 0 0 2 0 0 ...}
+\end{Highlighting}
+\end{Shaded}
+
+The function \texttt{load\_SOM\_products} is just a wrapper which calls each step of the above under the hood. Its return value is an R list with component names as above. The conversion of both the data and weight cubes to their respective matrices is done internally (along with the row reordering of W discussed above). List elements can be accessed via the \texttt{\$}, e.g., to return the data matrix
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(SHGRSOM}\OperatorTok{$}\NormalTok{X)}
+\CommentTok{##  num [1:16384, 1:100] 463 489 490 467 470 ...}
+\end{Highlighting}
+\end{Shaded}
+
+One caveat here is that, if nna\_file is given, the prototype matrix is mapped from network range to input range.
+
+Note that not all inputs to \texttt{load\_SOM\_products} are required. If, for example, you only wish to import the data cube, you can specify the data\_file path and leave the others blank
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(NeuroScopeIO}\OperatorTok{::}\KeywordTok{load_SOM_products}\NormalTok{(}\DataTypeTok{data_file =}\NormalTok{ data_file))}
+\CommentTok{## Loading NeuroScope products ...}
+\CommentTok{## ++ data cube ... done}
+\CommentTok{## ++ include file ... skipped (given as null)}
+\CommentTok{## ++ nna file ... skipped (given as null)}
+\CommentTok{## ++ weight cube ... skipped (given as null)}
+\CommentTok{## ++ nunr file ... skipped (given as null)}
+\CommentTok{## ++ lattice coords ... skipped (must supply wgtcub_file to compute lattice coords)}
+\CommentTok{## ++ ctab file ... skipped (given as null)}
+\CommentTok{## ++ cadj file ... skipped (given as null)}
+\CommentTok{## List of 4}
+\CommentTok{##  $ X    : num [1:16384, 1:100] 463 489 490 467 470 ...}
+\CommentTok{##  $ img_x: int 128}
+\CommentTok{##  $ img_y: int 128}
+\CommentTok{##  $ img_z: int 100}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{visualizations}{%
+\section{Visualizations}\label{visualizations}}
+
+Minor visualization capabilities exist within the package, mostly for checking the integrity of the imported information. For example, once imported, a color table can be viewed:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{vis_ctab}\NormalTok{(}\DataTypeTok{ctab =}\NormalTok{ ctab, }\DataTypeTok{label.cex =} \FloatTok{0.9}\NormalTok{, }\DataTypeTok{label.font =} \DecValTok{2}\NormalTok{, }\DataTypeTok{nrows_in_display =} \OtherTok{NULL}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{NeuroScopeIO.README_files/figure-latex/NeuroScopeIO_ctab-1.pdf}
+The label.cex argument controls the size of each label as plotted in its square, and the label.font controls whether the label is printed in bold (=2) or regular face (=1). nrows\_in\_display allows manually setting the number of rows in the visualized table. If not given, this defaults to NULL, which is a flag for the function to pick its own visualized table dimensions.
+
+For labeled data, class maps can be visualized with
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{vis_classmap}\NormalTok{(}\DataTypeTok{class_matrix =}\NormalTok{ incl}\OperatorTok{$}\NormalTok{class, }\DataTypeTok{ctab =}\NormalTok{ ctab)}
+\CommentTok{## Warning in as.cimg.array(RGBarray): Assuming third dimension corresponds to}
+\CommentTok{## colour}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{NeuroScopeIO.README_files/figure-latex/NeuroScopeIO_classmap-1.pdf}
+The argument class\_matrix must contain class labels for each pixel (and be in ``image'' format, i.e., with dimensions = image dimension). This obviously requires import of the include and ctab information.
+
+PE plurality labels of the SOM can be visualized in the same manner by converting the nunr class information back to a cube:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{som_labels =}\StringTok{ }\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{convert_datmat_to_datcub}\NormalTok{(}\DataTypeTok{datmat=}\NormalTok{nunr}\OperatorTok{$}\NormalTok{class, }\DataTypeTok{img_x =}\NormalTok{ som_x, }\DataTypeTok{img_y =}\NormalTok{ som_y)}
+\NormalTok{NeuroScopeIO}\OperatorTok{::}\KeywordTok{vis_classmap}\NormalTok{(}\DataTypeTok{class_matrix =}\NormalTok{ som_labels, }\DataTypeTok{ctab =}\NormalTok{ ctab, }\DataTypeTok{pixel_expansion_factor =} \DecValTok{5}\NormalTok{)}
+\CommentTok{## Warning in as.cimg.array(RGBarray): Assuming third dimension corresponds to}
+\CommentTok{## colour}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{NeuroScopeIO.README_files/figure-latex/NeuroScopeIO_pluralitylabel-1.pdf}
+
+The additional argument pixel\_expansion\_factor enlarges each pixel defined in the class\_matrix by its value. This is helpful for visualizing SOM labels, as SOM lattices are typically small (and the resulting plot hard to see).
+
+\end{document}

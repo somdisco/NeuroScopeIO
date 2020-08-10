@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Importing Data Products | NeuroScopeIO</title>
+  <meta name="description" content="Chapter 2 Importing Data Products | NeuroScopeIO" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Importing Data Products | NeuroScopeIO" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Importing Data Products | NeuroScopeIO" />
+  
+  
+  
+
+<meta name="author" content="Josh Taylor" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="collect-product-paths.html"/>
+<link rel="next" href="ann-somconsc-products.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="collect-product-paths.html"><a href="collect-product-paths.html"><i class="fa fa-check"></i><b>1</b> Collect Product Paths</a></li>
+<li class="chapter" data-level="2" data-path="importing-data-products.html"><a href="importing-data-products.html"><i class="fa fa-check"></i><b>2</b> Importing Data Products</a><ul>
+<li class="chapter" data-level="2.1" data-path="importing-data-products.html"><a href="importing-data-products.html#data-cubes"><i class="fa fa-check"></i><b>2.1</b> Data Cubes</a></li>
+<li class="chapter" data-level="2.2" data-path="importing-data-products.html"><a href="importing-data-products.html#include-files"><i class="fa fa-check"></i><b>2.2</b> Include Files</a></li>
+<li class="chapter" data-level="2.3" data-path="importing-data-products.html"><a href="importing-data-products.html#nna-files"><i class="fa fa-check"></i><b>2.3</b> nna Files</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ann-somconsc-products.html"><a href="ann-somconsc-products.html"><i class="fa fa-check"></i><b>3</b> ann-SOMconsc Products</a><ul>
+<li class="chapter" data-level="3.1" data-path="ann-somconsc-products.html"><a href="ann-somconsc-products.html#weight-cubes"><i class="fa fa-check"></i><b>3.1</b> Weight Cubes</a></li>
+<li class="chapter" data-level="3.2" data-path="ann-somconsc-products.html"><a href="ann-somconsc-products.html#nunr-mapping-info"><i class="fa fa-check"></i><b>3.2</b> NUNR Mapping Info</a></li>
+<li class="chapter" data-level="3.3" data-path="ann-somconsc-products.html"><a href="ann-somconsc-products.html#color-tables"><i class="fa fa-check"></i><b>3.3</b> Color Tables</a></li>
+<li class="chapter" data-level="3.4" data-path="ann-somconsc-products.html"><a href="ann-somconsc-products.html#cadj"><i class="fa fa-check"></i><b>3.4</b> CADJ</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="importing-a-complete-product-suite.html"><a href="importing-a-complete-product-suite.html"><i class="fa fa-check"></i><b>4</b> Importing a Complete Product Suite</a></li>
+<li class="chapter" data-level="5" data-path="visualizations.html"><a href="visualizations.html"><i class="fa fa-check"></i><b>5</b> Visualizations</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">NeuroScopeIO</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="importing-data-products" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Importing Data Products</h1>
+<div id="data-cubes" class="section level2">
+<h2><span class="header-section-number">2.1</span> Data Cubes</h2>
+<p>The function <code>NeuroScopeIO::read_khoros_viff</code> function accepts two arguments: <span class="math inline">\(\texttt{filename}\)</span>, which is a path to the viff cube to import, and <span class="math inline">\(\texttt{verbose}\)</span>, which is boolean. If <code>verbose=T</code> then the pixel spectra of the four “corners” of the image cube are printed to the R console window, which can be helpful for spot checking your import. The return value is a 3d data cube (array) in R, whose (1,1) element contains the spectral from pixel (1,1) in the image, and so on.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">X =<span class="st"> </span>NeuroScopeIO<span class="op">::</span><span class="kw">read_khoros_viff</span>(<span class="dt">filename =</span> data_file, <span class="dt">verbose =</span> T)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">## NW corner of cube: </span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">## 462.905417 467.139347 451.875788 470.143694 471.996632 470.979375 467.936955 465.556848 454.161335 461.324137 473.334481 480.390168 476.443341 455.830319 441.095279 439.470836 450.961738 480.850512 476.289590 466.560884 462.860865 467.264997 484.089233 474.261554 486.349378 484.372960 479.891681 468.072284 474.292927 471.782062 483.868598 478.434114 468.879215 468.346716 452.833794 447.359703 427.077417 398.776461 380.216384 374.790575 348.339872 357.474661 332.916679 359.997571 340.321592 358.210179 324.091123 303.456471 300.628871 288.338148 263.503222 282.594167 255.035451 260.302861 253.883799 240.602632 225.290664 212.443285 182.289182 174.120390 162.650775 186.485478 178.763019 147.542179 114.733801 117.456128 130.742473 105.545154 103.464901 82.036330 92.592826 72.371775 77.521850 85.175450 92.167791 98.580697 124.111761 128.435257 123.484324 115.636858 127.543217 130.490785 141.466288 157.498058 171.175108 170.918006 195.740554 182.381542 196.591101 214.531312 207.191930 193.879978 190.255149 207.677240 208.649775 212.392919 224.380676 231.642399 276.543361 271.495172</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">## NE corner of cube:</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">## 804.353130 821.655741 816.815530 822.657375 822.450648 805.601848 822.200685 830.811183 827.041546 832.767293 825.944846 839.364013 834.869276 823.737655 814.432268 804.503943 803.779608 796.588310 798.670821 790.318693 784.744751 791.146167 801.009245 816.662559 814.140741 818.066884 812.690489 810.689387 815.818205 808.724808 821.893573 820.735058 801.044839 784.108131 789.075317 781.774846 814.079346 803.210015 807.559813 821.385192 817.622085 824.051329 836.368333 843.401587 850.989435 846.383876 850.114898 850.257265 842.692469 846.446263 842.766497 847.571531 857.199043 879.706600 900.940821 897.395227 848.706110 822.972586 825.947504 815.445740 803.970729 795.843781 799.869847 801.951392 789.700447 776.384086 775.686474 770.827268 762.089856 754.361225 739.378772 726.790127 737.537560 736.523403 721.461170 718.246825 716.523985 708.753401 706.927268 682.739599 672.664577 663.394649 649.669611 630.002057 620.684699 612.129134 600.030668 597.632300 587.545247 587.035278 579.777805 576.083087 567.581192 564.933278 550.034293 524.662899 520.251160 513.590474 510.530266 513.814873</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">## SW corner of cube:</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">## 280.030129 260.716222 258.803367 221.690254 241.651300 246.235956 251.543549 233.403980 230.835027 193.730810 177.016994 156.644714 144.477926 135.068835 125.764259 105.191458 92.236929 80.139203 72.436972 70.300643 91.903324 92.509925 94.096357 78.333645 93.671704 100.475772 92.262470 103.514698 123.040452 114.404936 126.757339 130.753625 130.243967 129.907788 142.087864 148.917770 134.056808 120.848593 130.202979 129.354758 115.521644 112.319113 113.188364 104.731765 102.296041 78.479129 87.750895 89.728023 83.484264 74.362826 102.679900 111.323660 118.301298 120.432639 128.536643 132.771810 140.690766 142.494834 140.049443 138.925918 147.589510 143.392585 117.166103 129.367752 116.532179 128.754720 147.352920 147.899061 125.857617 128.175135 137.970951 156.350251 151.187806 164.282430 158.945535 180.389709 191.766469 196.694292 189.288153 201.134070 190.844981 199.237132 216.689355 233.190282 233.894118 219.838539 218.127674 208.146557 254.117140 251.758498 237.156102 234.104744 211.507529 222.207499 258.206425 241.438460 244.611309 250.027426 268.884742 271.600647</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">## SE corner of cube:</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">## 694.161150 706.606234 717.338467 717.277809 735.129885 753.215351 747.655152 761.917667 768.672739 763.681568 760.701872 756.486393 770.528292 783.567061 793.178351 803.398597 819.174402 831.837603 850.299578 828.362206 838.557097 849.101145 865.598972 866.109841 887.573397 876.638769 884.922573 876.886232 888.223196 894.298952 908.254135 930.816295 944.785814 958.146711 955.533505 963.724754 981.737840 994.406719 1022.534010 1009.666071 1013.727413 1001.357979 1007.914503 1003.686074 1011.750063 1021.638731 1030.419643 1029.768178 1026.659460 1060.011889 1076.046751 1074.581725 1090.198474 1092.372262 1092.926026 1107.995223 1088.787906 1097.741583 1073.632139 1062.620631 1075.346016 1068.904342 1064.582176 1057.056786 1091.398096 1059.318654 1065.909417 1068.538086 1077.736985 1077.740973 1068.440847 1048.383679 1063.562894 1074.715111 1055.060139 1035.389863 1019.273709 1009.956190 1019.812581 1015.649581 1011.075110 1006.923306 1003.454606 980.933190 986.772710 986.826976 975.667198 945.313115 944.593393 936.455738 937.286261 928.866086 924.201746 909.101249 889.861282 898.314063 891.370622 881.129771 872.878963 864.187684</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="kw">str</span>(X)</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">##  num [1:128, 1:128, 1:100] 463 466 466 499 485 ...</span></a></code></pre></div>
+<p>Note that the function <code>read_khoros_viff</code> is internally calling another function of the NeuroScopeIO library to read and interpret the Khoros viff header: <code>read_khoros_header</code>. It is rarely necessary to invoke this function by itself.</p>
+<p>We can strip out and save the cube dimensions for later use:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">img_x =<span class="st"> </span><span class="kw">ncol</span>(X)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">img_x</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">## [1] 128</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">img_y =<span class="st"> </span><span class="kw">nrow</span>(X)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">img_y</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">## [1] 128</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">img_z =<span class="st"> </span><span class="kw">dim</span>(X)[<span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">img_z</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">## [1] 100</span></a></code></pre></div>
+<p>Most base R functionality is built around <strong>data matrices</strong>, not arrays, so we need to convert the 3d cube we just imported to a data matrix. Use the command:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">X =<span class="st"> </span>NeuroScopeIO<span class="op">::</span><span class="kw">convert_datcub_to_datmat</span>(<span class="dt">datcub =</span> X)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">str</span>(X)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">##  num [1:16384, 1:100] 463 489 490 467 470 ...</span></a></code></pre></div>
+<p>Data matrices have nrows = img_x*img_y and ncols = img_z. The data matrix is populated in band-sequantial order (top to bottom, left to right), so that row 1 corresponds to the spectra in pixel (x=1,y=1), row 2 corresponds to pixel (x=2,y=1), and so on.</p>
+<p>If desired at some point, any data matrix can be converted back into a data cube via</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">Xcube =<span class="st"> </span>NeuroScopeIO<span class="op">::</span><span class="kw">convert_datmat_to_datcub</span>(<span class="dt">datmat =</span> X, <span class="dt">img_x =</span> img_x, <span class="dt">img_y =</span> img_y)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">str</span>(Xcube)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">##  num [1:128, 1:128, 1:100] 463 466 466 499 485 ...</span></a></code></pre></div>
+<p>You must supply the image x-y dimensions for this conversion.</p>
+</div>
+<div id="include-files" class="section level2">
+<h2><span class="header-section-number">2.2</span> Include Files</h2>
+<p>The *.incl file associated with each data cube contains pertinent information about pixel labels and masking (that is, whether each pixel is “masked” from the training / recall process). We import this information into R with the function <span class="math inline">\(\texttt{read\_incl}\)</span>, which takes a path to a .incl file, along with the image x-y dimensions as inputs:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">incl =<span class="st"> </span>NeuroScopeIO<span class="op">::</span><span class="kw">read_incl</span>(<span class="dt">filename =</span> include_file, <span class="dt">img_x =</span> img_x, <span class="dt">img_y =</span> img_y)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">str</span>(incl)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">## List of 2</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">##  $ masked: logi [1:128, 1:128] FALSE FALSE FALSE FALSE FALSE FALSE ...</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">##  $ class : chr [1:128, 1:128] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; ...</span></a></code></pre></div>
+<p>The return value of <span class="math inline">\(\texttt{read\_incl}\)</span> is an R list with components:</p>
+<ul>
+<li><strong>masked</strong>, which is a matrix (nrows = img_y, ncols = img_x) whose (i,j) entry = TRUE if pixel (i,j) is maksed from processing, or FALSE otherwise</li>
+<li><strong>class</strong>, which is a matrix (nrows = img_y, ncols = img_x) whose (i,j) entry = the class label of pixel (i,j). If no class labels are found in the .incl file, all entries of this matrix are set = “?”.<br />
+If an application requires matching a label or mask designation to each row of the data matrix <span class="math inline">\(X\)</span>, we can convert the incl matrices (which are just cubes which have a 3rd dimension size = 1) to <span class="math inline">\(\texttt{convert\_datcub\_to\_datmat}\)</span>:</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">vec_mask =<span class="st"> </span>NeuroScopeIO<span class="op">::</span><span class="kw">convert_datcub_to_datmat</span>(<span class="dt">datcub =</span> incl<span class="op">$</span>masked)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">str</span>(vec_mask)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">##  logi [1:16384, 1] FALSE FALSE FALSE FALSE FALSE FALSE ...</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">vec_class =<span class="st"> </span>NeuroScopeIO<span class="op">::</span><span class="kw">convert_datcub_to_datmat</span>(<span class="dt">datcub =</span> incl<span class="op">$</span>class)</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="kw">str</span>(vec_class)</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">##  chr [1:16384, 1] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; ...</span></a></code></pre></div>
+<p><span class="math inline">\(\color{red}{\text{Note}}\)</span>: Since R follows column-major order, DO NOT just vectorize the matrices (i.e., with <code>c(incl$class)</code>). This would result in a vector of labels in pixel order (x=1,y=1), (x=1,y=2) (i.e, along rows). You could achieve correct behavior with <code>c(t(incl$class))</code>, but I suggest using the built-in conversion functions for clarity.</p>
+</div>
+<div id="nna-files" class="section level2">
+<h2><span class="header-section-number">2.3</span> nna Files</h2>
+<p>The scaling information (from network input range to network output range) utilized during training and recall is contained in .nna files, which we load into R with</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">nna =<span class="st"> </span>NeuroScopeIO<span class="op">::</span><span class="kw">read_nna</span>(<span class="dt">filename =</span> nna_file, <span class="dt">img_z =</span> img_z)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">str</span>(nna)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">## List of 4</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">##  $ input_min : num [1:100] -200 -200 -200 -200 -200 -200 -200 -200 -200 -200 ...</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">##  $ input_max : num [1:100] 1400 1400 1400 1400 1400 1400 1400 1400 1400 1400 ...</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">##  $ output_min: num 0</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">##  $ output_max: num 1</span></a></code></pre></div>
+<p>The return value of <code>read_nna</code> is again a list with components:</p>
+<ul>
+<li><strong>input_min</strong> the min of the network input range, by dimension (a vector of length=img_z)</li>
+<li><strong>input_max</strong> the max of the network input range, by dimension (a vector of length=img_z)</li>
+<li><strong>output_min</strong> the min of the network output range (a single number, usually = 0)</li>
+<li><strong>output_max</strong> the max of the network output range (a single number, usually = 1)</li>
+</ul>
+<p>Importing .nna information is required for replicating a recall (performing BMU selection, building a CADJ matrix, etc) in R.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="collect-product-paths.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ann-somconsc-products.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["NeuroScopeIO.README.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

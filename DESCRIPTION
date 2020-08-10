@@ -1,0 +1,15 @@
+Package: NeuroScopeIO
+Title: Process NeuroScope products 
+Version: 0.0.0.1
+Author: Josh Taylor <jtay@rice.edu>
+Maintainer: Josh Taylor <jtay@rice.edu>
+Description: A collection of tools to import/export NeuroScope and Khoros files both to and from an R environment. 
+Depends: R (>= 3.4.0)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+Imports:
+    imager,
+    stringr,
+    readr

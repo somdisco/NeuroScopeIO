@@ -1,0 +1,8 @@
+#useDynLib(SOMDisco, .registration=TRUE)
+exportPattern("^[[:alpha:]]+")
+importFrom("grDevices", "col2rgb", "colorRamp", "rgb")
+importFrom("graphics", "par", "rect", "text")
+importFrom("stats", "ecdf", "median", "quantile", "sd")
+#import(Rcpp)
+#importFrom(Rcpp, evalCpp)
+#importFrom(RcppParallel, RcppParallelLibs)

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 ann-SOMconsc Products | NeuroScopeIO</title>
+  <meta name="description" content="Chapter 3 ann-SOMconsc Products | NeuroScopeIO" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 ann-SOMconsc Products | NeuroScopeIO" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 ann-SOMconsc Products | NeuroScopeIO" />
+  
+  
+  
+
+<meta name="author" content="Josh Taylor" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="importing-data-products.html"/>
+<link rel="next" href="importing-a-complete-product-suite.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="collect-product-paths.html"><a href="collect-product-paths.html"><i class="fa fa-check"></i><b>1</b> Collect Product Paths</a></li>
+<li class="chapter" data-level="2" data-path="importing-data-products.html"><a href="importing-data-products.html"><i class="fa fa-check"></i><b>2</b> Importing Data Products</a><ul>
+<li class="chapter" data-level="2.1" data-path="importing-data-products.html"><a href="importing-data-products.html#data-cubes"><i class="fa fa-check"></i><b>2.1</b> Data Cubes</a></li>
+<li class="chapter" data-level="2.2" data-path="importing-data-products.html"><a href="importing-data-products.html#include-files"><i class="fa fa-check"></i><b>2.2</b> Include Files</a></li>
+<li class="chapter" data-level="2.3" data-path="importing-data-products.html"><a href="importing-data-products.html#nna-files"><i class="fa fa-check"></i><b>2.3</b> nna Files</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ann-somconsc-products.html"><a href="ann-somconsc-products.html"><i class="fa fa-check"></i><b>3</b> ann-SOMconsc Products</a><ul>
+<li class="chapter" data-level="3.1" data-path="ann-somconsc-products.html"><a href="ann-somconsc-products.html#weight-cubes"><i class="fa fa-check"></i><b>3.1</b> Weight Cubes</a></li>
+<li class="chapter" data-level="3.2" data-path="ann-somconsc-products.html"><a href="ann-somconsc-products.html#nunr-mapping-info"><i class="fa fa-check"></i><b>3.2</b> NUNR Mapping Info</a></li>
+<li class="chapter" data-level="3.3" data-path="ann-somconsc-products.html"><a href="ann-somconsc-products.html#color-tables"><i class="fa fa-check"></i><b>3.3</b> Color Tables</a></li>
+<li class="chapter" data-level="3.4" data-path="ann-somconsc-products.html"><a href="ann-somconsc-products.html#cadj"><i class="fa fa-check"></i><b>3.4</b> CADJ</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="importing-a-complete-product-suite.html"><a href="importing-a-complete-product-suite.html"><i class="fa fa-check"></i><b>4</b> Importing a Complete Product Suite</a></li>
+<li class="chapter" data-level="5" data-path="visualizations.html"><a href="visualizations.html"><i class="fa fa-check"></i><b>5</b> Visualizations</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">NeuroScopeIO</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ann-somconsc-products" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> ann-SOMconsc Products</h1>
+<div id="weight-cubes" class="section level2">
+<h2><span class="header-section-number">3.1</span> Weight Cubes</h2>
+<p>Since weight cubes (*.wgtcub files) are just Khoros cubes in viff format, we can import them with the same function used to import the data cubes:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">W =<span class="st"> </span>NeuroScopeIO<span class="op">::</span><span class="kw">read_khoros_viff</span>(<span class="dt">filename =</span> wgtcub_file, <span class="dt">verbose =</span> F)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">str</span>(W)</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">##  num [1:20, 1:20, 1:100] -0.404 -0.403 -0.406 -0.411 -0.33 ...</span></a></code></pre></div>
+<p>Note that, as imported, W is in internal network range, so if any comparison to the data is desired it must be mapped to data range first. The weight cube has dimensions width = som_x and height = som_y, which we can save for later use:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">som_x =<span class="st"> </span><span class="kw">ncol</span>(W)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">som_x</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">## [1] 20</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">som_y =<span class="st"> </span><span class="kw">nrow</span>(W)</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">som_y</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">## [1] 20</span></a></code></pre></div>
+<p>Ultimately we need to convert the imported array W to a data matrix as well, but there is a crucial intermediate step. The (1,1) entry of W corresponds to the prototype vector attached to the top-left neuron of the SOM lattice. However, NeuroScope convention for other SOM products (nunr, CADJ) begins neuron/prototype ordering at the <strong>bottom left</strong> corner of the lattice. Thus, we need to flip the rows of this cube before converting to a data matrix using the function:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">W =<span class="st"> </span>NeuroScopeIO<span class="op">::</span><span class="kw">flip_datcub</span>(<span class="dt">datcub =</span> W, <span class="dt">flipX =</span> F, <span class="dt">flipY =</span> T, <span class="dt">flipZ =</span> F)</a></code></pre></div>
+<p>Note the arguments flipX, flipY, and flipZ all default to F (to flip rows of a data cube, we set flipY = TRUE). Now we can convert W to a data matrix as above:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">W =<span class="st"> </span>NeuroScopeIO<span class="op">::</span><span class="kw">convert_datcub_to_datmat</span>(<span class="dt">datcub =</span> W)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">str</span>(W)</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">##  num [1:400, 1:100] 0.098 0.0974 0.0982 0.098 0.1027 ...</span></a></code></pre></div>
+</div>
+<div id="nunr-mapping-info" class="section level2">
+<h2><span class="header-section-number">3.2</span> NUNR Mapping Info</h2>
+<p>The actual mapping formed during SOM learning is contained in the associated .nunr file, which we load into R via</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">nunr =<span class="st"> </span>NeuroScopeIO<span class="op">::</span><span class="kw">read_nunr</span>(<span class="dt">filename =</span> nunr_file, <span class="dt">som_x =</span> som_x, <span class="dt">som_y =</span> som_y, <span class="dt">img_x =</span> img_x, <span class="dt">img_y =</span> img_y)</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">str</span>(nunr)</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">## List of 4</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">##  $ density     : num [1:400] 86 77 78 72 83 68 66 71 69 63 ...</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">##  $ class       : chr [1:400] &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; ...</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">##  $ mapping     : int [1:128, 1:128] 272 334 273 292 247 230 356 248 337 345 ...</span></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">##  $ som_indexmap: int [1:20, 1:20] 381 361 341 321 301 281 261 241 221 201 ...</span></a></code></pre></div>
+<p>Note that the function <code>read_nunr</code> requires not only the path of the nunr file itself, but also the dimensions of the image cube and SOM. This information is contained in the header of .nunr files, but I have required it here as a check. Again, the nunr information is returned to R as a list with components:</p>
+<ul>
+<li><strong>density</strong> a vector (length = # of PEs, or som_x*som_y) containing the size of each prototype’s receptive field</li>
+<li><strong>class</strong> a vector (length = # of PEs) containing the plurality data label of pixels mapped to each prototype</li>
+<li><strong>mapping</strong> a matrix (nrows = img_y, ncols = img_x) whose (i,j) entry contains the index of the PEto which pixel (i,j) is mapped. For this purpose, PE indices are treated as linear indices (not array indices), and range from 1 to som_x*som_y.<br />
+</li>
+<li><strong>som_indexmap</strong> a matrix(nrows = som_y, ncols = som_x) whose (i,j) entry contains the linear index of the (i,j) neuron on the SOM lattice. The information in this matrix can be merged with that in the mapping matrix to determing the (x,y) neuron location to which a data vector is mapped, if desired.</li>
+</ul>
+</div>
+<div id="color-tables" class="section level2">
+<h2><span class="header-section-number">3.3</span> Color Tables</h2>
+<p>Color table information is contained in .ctab files, which can be loaded with</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">ctab =<span class="st"> </span>NeuroScopeIO<span class="op">::</span><span class="kw">read_ctab</span>(<span class="dt">filename =</span> ctab_file)</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw">str</span>(ctab)</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">## &#39;data.frame&#39;:    20 obs. of  4 variables:</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">##  $ class: chr  &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">##  $ R    : num  15 255 76 237 182 255 255 23 136 140 ...</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">##  $ G    : num  82 116 187 41 96 242 111 190 128 86 ...</span></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co">##  $ B    : num  186 23 23 57 205 0 255 207 123 75 ...</span></a></code></pre></div>
+<p>The color table is returned to R as a data frame with columns:</p>
+<ul>
+<li><strong>class</strong> the set of distinct labels for pixels in the data cube</li>
+<li><strong>R</strong>, <strong>G</strong>, <strong>B</strong> which are the RGB color components associated with each label.</li>
+</ul>
+<p>Note that no assumption is made to the completeness of the ctab (i.e., whether it is missing color specifications for labels found in incl$class). The above function merely reads the information as it exists in a .ctab file.</p>
+</div>
+<div id="cadj" class="section level2">
+<h2><span class="header-section-number">3.4</span> CADJ</h2>
+<p>CADJ matrices are stored in .cadj files which are Khoros KDF formatted. <strong>For use in R, .cadj files must be converted to viff format</strong> with kformats. Once this conversion is complete, we can read the CADJ with the viff reader:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">CADJ =<span class="st"> </span>NeuroScopeIO<span class="op">::</span><span class="kw">read_khoros_viff</span>(<span class="dt">filename =</span> cadj_file, <span class="dt">verbose =</span> F)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw">str</span>(CADJ)</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">##  int [1:400, 1:400, 1] 0 34 0 0 0 0 0 1 0 0 ...</span></a></code></pre></div>
+<p>Note that the above imported CADJ as a 3d cube, whose 3rd dimension has size = 1. It is generally easier to work with matrices in R, so we can drop the third dimension</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">CADJ =<span class="st"> </span>CADJ[,,<span class="dv">1</span>]</a></code></pre></div>
+<p>Since the CONN matrix is also of frequent use, I suggest building it from the CADJ import immediately:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">CONN =<span class="st"> </span>CADJ <span class="op">+</span><span class="st"> </span><span class="kw">t</span>(CADJ)</a></code></pre></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="importing-data-products.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="importing-a-complete-product-suite.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["NeuroScopeIO.README.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
