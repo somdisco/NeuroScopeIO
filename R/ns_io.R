@@ -37,9 +37,13 @@ read_incl = function(filename, img_x, img_y) {
   idx_to_change = which(!is.na(comment_start_pos))
   incl[idx_to_change] = stringr::str_sub(incl[idx_to_change], start = rep(1,length(idx_to_change)), end = comment_start_pos[idx_to_change]-1)
 
-  ### ****** Remove any empty lines ******
-  line_lengths = stringr::str_length(incl)
-  incl = incl[-which(line_lengths==0)]
+  ### ****** Remove lines that do not contain either "include" or "exclude"
+  incl = incl[stringr::str_detect(incl, "include") | stringr::str_detect(incl, "exclude")]
+
+  #* Following no longer needed, since we filtered to include only lines containing 'include' or 'exclude'
+  #* ### ****** Remove any empty lines ******
+  #* line_lengths = stringr::str_length(incl)
+  #* incl = incl[-which(line_lengths==0)]
 
   ### ****** Remove any duplicate whitespace ******
   incl = stringr::str_replace_all(incl, pattern = "\\s+", replacement = " ")

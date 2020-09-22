@@ -438,7 +438,7 @@ write_khoros_viff = function(X, img_x = NULL, img_y = NULL, filename, header_com
   con = file(filename, open = 'wb')
 
   ### Write the header
-  write_khoros_header(con, imgE = 'little', imgW = img_width, imgH = img_height, imgB = img_depth, imgT = 'double', comment = header_comment)
+  write_khoros_header(con, imgE = 'little', imgW = img_x, imgH = img_y, imgB = img_depth, imgT = 'double', comment = header_comment)
 
   ### Write the data
   for(i in 1:img_depth) {
