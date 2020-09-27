@@ -78,7 +78,7 @@ convert_datmat_to_datcub = function(datmat, img_x, img_y) {
   # return(out)
 
   if(!is.matrix(datmat)) datmat = as.matrix(datmat)
-  datacube = array(datmat, dim = c(img_y,img_x,ncol(datmat)))
+  datacube = array(datmat, dim = c(img_x,img_y,ncol(datmat)))
   datacube = base::aperm(datacube, perm = c(2,1,3))
   return(datacube)
 }

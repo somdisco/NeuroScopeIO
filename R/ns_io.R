@@ -449,7 +449,10 @@ write_nna = function(filename, input_min, input_max, output_min, output_max, gro
 
   for(i in 1:length(input_min)) {
     cat(sprintf("%g",input_min[i]), file = con)
-    if(i %% group_size == 0 && i < length(input_min)) {
+
+    if(i == length(input_min)) break
+
+    if(i %% group_size == 0) {
       cat(sprintf("\n&"), file=con)
     } else {
       cat(sprintf(" "), file=con)
@@ -457,19 +460,27 @@ write_nna = function(filename, input_min, input_max, output_min, output_max, gro
   }
 
   cat(sprintf("\n&"), file=con)
+
   for(i in 1:length(output_min)) {
     cat(sprintf("%g",output_min[i]), file=con)
-    if(i %% group_size == 0 && i < length(output_min)) {
+
+    if(i == length(output_min)) break
+
+    if(i %% group_size == 0) {
       cat(sprintf("\n&"), file=con)
     } else {
       cat(sprintf(" "), file=con)
     }
   }
+
   cat(sprintf("\n"), file=con)
 
   for(i in 1:length(input_max)) {
     cat(sprintf("%g",input_max[i]), file=con)
-    if(i %% group_size == 0 && i < length(input_max)) {
+
+    if(i == length(input_max)) break
+
+    if(i %% group_size == 0) {
       cat(sprintf("\n&"), file=con)
     } else {
       cat(sprintf(" "), file=con)
@@ -477,14 +488,20 @@ write_nna = function(filename, input_min, input_max, output_min, output_max, gro
   }
 
   cat(sprintf("\n&"), file=con)
+
   for(i in 1:length(output_max)) {
     cat(sprintf("%g",output_max[i]), file=con)
-    if(i %% group_size == 0 && i < length(output_max)) {
+
+    if(i == length(output_max)) break
+
+    if(i %% group_size == 0) {
       cat(sprintf("\n&"), file=con)
     } else {
       cat(sprintf(" "), file=con)
     }
   }
+
+  cat(sprintf("\n"), file=con)
 
   close(con)
 }
